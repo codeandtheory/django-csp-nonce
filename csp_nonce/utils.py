@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
 import base64
-import nacl.secret
-import nacl.utils
+import uuid
 
 
 def generate_nonce():
     """ Return a unique base64 encoded nonce hash """
-    nonce = nacl.utils.random(nacl.secret.SecretBox.NONCE_SIZE)
+    nonce = base64.b64encode(uuid.uuid4().bytes)
     return "{}".format(base64.b64encode(nonce))
 
 
